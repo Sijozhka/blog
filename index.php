@@ -2,7 +2,7 @@
 ini_set('error reporting',E_ALL);
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
-use c\ArticleController;
+
 
 function __autoload($classname) 
 {
@@ -10,12 +10,9 @@ function __autoload($classname)
 }
 
 
-
 session_start();
-$ctrl = new ArticleController();
-$ctrl->indexAction();
-$ctrl->render();
-
+$app =  new core\App(new core\Request($_GET,$_POST,$_SERVER));
+$app->go();
 
 
 

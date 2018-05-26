@@ -5,7 +5,7 @@
 
 			<tr>
 				<td><?=$one["dt"] ?></td>
-				<td><a href="article.php?id=<?=$one['id_news']?>"><?=$one["title"] ?></a></td>
+				<td><a href="/article?id=<?=$one['id_news']?>"><?=$one["title"] ?></a></td>
 				
 			</tr>
 		<? endforeach ?>
