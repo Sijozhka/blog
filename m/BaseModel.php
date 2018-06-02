@@ -1,6 +1,8 @@
 <?php 
 namespace m;
 
+use core\SQL;
+
 class BaseModel 
 {
 	protected $db;
@@ -9,20 +11,12 @@ class BaseModel
 
 	public function __construct()
 	{
-		$this->db = DB::Instance();
+		$this->db = SQL::Instance();
 	}
 
 	public function all() {
-		$query = $this->db->prepare("SELECT * FROM {$this->table}");
-		$query->execute();
-
-		if ($query->errorCode() != \PDO::ERR_NONE) {
-			$info = $query->errorInfo();
-			echo implode('<br>', $info);
-			exit();
-		}
-
-		return $query->fetchAll();
+		
+		return $this->db->query("SELECT * FROM {$this->table}");
 
 	}
 
